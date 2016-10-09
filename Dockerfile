@@ -8,6 +8,18 @@
 FROM java:7
 MAINTAINER Ikenna N. Okpala <me@ikennaokpala.com>
 # Install ElasticSearch.
+# i.e
+# BUILD_DATE `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+# VCS_REF `git rev-parse --short HEAD`
+LABEL org.label-schema.build-date=$BUILD_DATE \
+       org.label-schema.docker.dockerfile="/Dockerfile" \
+       org.label-schema.license="GNU GENERAL PUBLIC LICENSE" \
+       org.label-schema.name="Elasticsearch Container (gfb)" \
+       org.label-schema.url="http://globalfoodbook.com/" \
+       org.label-schema.vcs-ref=$VCS_REF \
+       org.label-schema.vcs-type="Git" \
+       org.label-schema.vcs-url="https://github.com/globalfoodbook/elasticsearch.git"
+
 RUN \
   cd /tmp && \
   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.tar.gz && \
